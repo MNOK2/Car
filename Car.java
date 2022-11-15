@@ -59,7 +59,7 @@ public abstract class Car {
         this._gasLevel -= this._speed / this._gasMileage;
         if (this._gasLevel < 0.0f) this._gasLevel = 0.0f;
         deltaGasLevel = this._gasLevel - beforeGasLevel;
-        this._mileage += this._speed * -(deltaGasLevel / this._speed);
+        this._mileage += this._gasMileage * -deltaGasLevel;
         System.out.println(String.format("ブーン ＾＾（%.1fkm走行！, 燃料: %.1f -> %.1f/%.1fL）", this._mileage, beforeGasLevel, this.gasLevel(), this.gasLevelMax()));
     }
 }

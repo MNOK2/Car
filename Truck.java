@@ -13,6 +13,6 @@ public class Truck extends Car {
 
     @Override
     public String toString() {
-        return String.format("=== トラック ===\n速さ: %.1fkm/h\n燃料: %.1f/%.1fL\n燃費: %.1fkm/h\n最大積載量: %.1ft\nタイヤの数: %d個\nドアの数: %d個", this.speed(), this.gasLevel(), this.gasLevelMax(), this.gasMileage(), this.loadCapacity(), this.tiresCount(), this.doorsCount());
+        return String.format("=== トラック ===\n速さ: %.1fkm/h\n燃料: %.1f/%.1fL\n燃費: %.1fkm/L\n最大積載量: %.1ft\nタイヤの数: %d個\nドアの数: %d個", this.speed(), this.gasLevel(), this.gasLevelMax(), this.gasMileage(), this.loadCapacity(), this.tiresCount(), this.doorsCount());
     }
 }

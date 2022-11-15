@@ -5,6 +5,7 @@ public abstract class Car {
     private final int _tiresCount;
     private final int _doorsCount;
     private float _gasLevel;
+    private float _mileage = 0.0f;
 
     protected Car(float speed, float gasLevelMax, float gasMileage, int tiresCount, int doorsCount) {
         if (speed < 0.0f || gasLevelMax < 0.0f || gasMileage < 0.0f || tiresCount < 0 || tiresCount < 0) throw new IllegalArgumentException();
@@ -52,9 +53,13 @@ public abstract class Car {
     public final void drive() {
         if (this._gasLevel <= 0.0f) throw new IllegalCallerException();
 
-        float beforeGasLevel = this.gasLevel();
-        this._gasLevel -= this._gasMileage;
+        float beforeGasLevel = this._gasLevel;
+        float deltaGasLevel;
+
+        this._gasLevel -= this._speed / this._gasMileage;
         if (this._gasLevel < 0.0f) this._gasLevel = 0.0f;
-        System.out.println(String.format("ブーン ＾＾（燃料: %.1f -> %.1f/%.1fL）", beforeGasLevel, this.gasLevel(), this.gasLevelMax()));
+        deltaGasLevel = this._gasLevel - beforeGasLevel;
+        this._mileage += this._speed * -(deltaGasLevel / this._speed);
+        System.out.println(String.format("ブーン ＾＾（%.1fkm走行！, 燃料: %.1f -> %.1f/%.1fL）", this._mileage, beforeGasLevel, this.gasLevel(), this.gasLevelMax()));
     }
 }

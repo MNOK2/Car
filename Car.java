@@ -51,7 +51,7 @@ public abstract class Car {
     }
 
     public final void drive() {
-        if (this._gasLevel <= 0.0f) throw new IllegalCallerException();
+        if (this.isEmpty()) throw new IllegalCallerException();
 
         float beforeGasLevel = this._gasLevel;
         float deltaGasLevel;
